@@ -1,34 +1,35 @@
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.Comparator;
 
 public class Test5 {
     public static void exampl() throws FileNotFoundException {
         ArrayList<Time> clock = readTimeFromFile();
-        System.out.println(clock);
+        for (Time r:clock){
+            System.out.println(r);
+        }
+//        System.out.println(clock);
     }
 public static ArrayList<Time> readTimeFromFile() throws FileNotFoundException {
     Scanner scanner=new Scanner(new File("Numbs Test5"));
-    int kolvo = scanner.nextInt();
     ArrayList<Time> clock=new ArrayList<>();
+    int kolvo = scanner.nextInt();
     while (scanner.hasNext()){
         int hours = scanner.nextInt();
         int minutes = scanner.nextInt();
         int seconds=scanner.nextInt();
         clock.add(new Time(hours, minutes, seconds));
-        var order = new ArrayList<>(List.of(clock));
-//        Collections.sort(order);
+//        var order = new ArrayList<>(List.of(clock));
+//        Collections.sort(clock);
+        clock.sort(Comparator.naturalOrder());
+
     }
     scanner.close();
     return clock;
 }
 }
-class Time{
+class Time implements Comparable<Time>{
     int hours;
     int minutes;
     int seconds;
@@ -53,10 +54,13 @@ class Time{
 
     @Override
     public String toString() {
-        return "Time{" +
-                "hours=" + hours +
-                ", minutes=" + minutes +
-                ", seconds=" + seconds +
-                '}';
+        return      " " + hours +
+                " " + minutes +
+                " " + seconds ;
+    }
+
+    @Override
+    public int compareTo(Time o) {
+        return this.hours-o.hours;
     }
 }
