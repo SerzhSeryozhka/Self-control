@@ -7,14 +7,10 @@ public class Test3 {
         System.out.println("Как тебя зовут?");
         Scanner scanner = new Scanner(System.in);
         String q = scanner.next();
-        int e=q.length();
-        String a="а";
-        String i="и";
-        String y="я";
-        System.out.println(q.charAt(e));
-//        if ()
+//        if (q.charAt(q.length()-1)=='а'||q.charAt(q.length()-1)=='и'||q.charAt(q.length()-1)=='я')
+        if (q.endsWith("а")|| q.endsWith("и")||q.endsWith("я"))
             System.out.println("Приветик!");
-//        else
+        else
             System.out.println("Здарово!");
-    }
-}
+
+}}
