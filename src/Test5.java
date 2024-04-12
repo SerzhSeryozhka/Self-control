@@ -61,6 +61,13 @@ class Time implements Comparable<Time>{
 
     @Override
     public int compareTo(Time o) {
+        if (o.hours==this.hours){
+            if (o.minutes==this.minutes)
+                return this.seconds-o.seconds;
+            else
+                return this.minutes-o.minutes;
+
+        }else
         return this.hours-o.hours;
     }
 }
